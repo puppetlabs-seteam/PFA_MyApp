@@ -1,4 +1,4 @@
-plan myapp::prereqs(
+plan myapp::install(
 ) {
   # Prep this node for applying Puppet code (doesn't work yet)
   # apply_prep('localhost')
