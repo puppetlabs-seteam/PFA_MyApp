@@ -39,6 +39,11 @@ plan myapp::install(
 
     file { '/var/www/myapp':
       ensure => directory
+      owner   => 'nginx',
+      group   => 'nginx',
+      mode    => '0755',
+      recurse => true,
+      require => Class['nginx']
     }
 
     file { "var/www/myapp/index.html":
