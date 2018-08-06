@@ -11,6 +11,7 @@ plan myapp::install(
   $report = apply('localhost') {
 
     include mysql::server
+    include mysql::client
     include nginx
 
     mysql::db { 'MyApp_database':
@@ -27,6 +28,11 @@ plan myapp::install(
       require => Class['nginx']
     }
 
+    class {'mysql::bindings':
+      php_enable => true,
+      require => Class['php']
+    }
+
     file { '/var/www':
       ensure => directory
     }
@@ -35,10 +41,15 @@ plan myapp::install(
       ensure => directory
     }
 
+    file { "var/www/myapp/index.html":
+      ensure  => file,
+      content => epp('profile/myapp/sample_website.html.epp'),
+    }
+
     nginx::resource::server { 'www.myapp.com':
       listen_port => 80,
       www_root    => '/var/www/myapp',
-      index_files => ['index.php'],
+      index_files => ['index.html'],
     }
 
   }
