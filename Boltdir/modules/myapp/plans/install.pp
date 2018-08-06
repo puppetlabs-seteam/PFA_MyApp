@@ -43,7 +43,7 @@ plan myapp::install(
 
     file { "var/www/myapp/index.html":
       ensure  => file,
-      content => epp('profile/myapp/sample_website.html.epp'),
+      content => epp('myapp/sample_website-index.html.epp'),
     }
 
     nginx::resource::server { 'www.myapp.com':
