@@ -5,3 +5,6 @@ mod 'puppetlabs-mysql',             :latest
 mod 'puppetlabs-translate',         :latest
 mod 'puppet-staging',               :latest
 mod 'dsestero-download_uncompress', :latest
+
+# name the module holding the plan so it doesn't get purged by 'bolt module install'
+mod 'wordpress', local: true
