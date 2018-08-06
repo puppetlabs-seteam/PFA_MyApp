@@ -1,0 +1,7 @@
+mod 'stahnma-epel',         :latest
+mod 'puppetlabs-stdlib',    :latest
+mod 'puppet-nginx',         :latest
+mod 'puppetlabs-concat',    :latest
+mod 'puppetlabs-mysql',     :latest
+mod 'puppetlabs-translate', :latest
+mod 'puppet-staging',       :latest
