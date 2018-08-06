@@ -1,4 +1,5 @@
 mod 'puppetlabs-stdlib',            :latest
+mod 'puppet-php',                   :latest
 mod 'puppet-nginx',                 :latest
 mod 'puppetlabs-concat',            :latest
 mod 'puppetlabs-mysql',             :latest
@@ -7,4 +8,4 @@ mod 'puppet-staging',               :latest
 mod 'dsestero-download_uncompress', :latest
 
 # name the module holding the plan so it doesn't get purged by 'bolt module install'
-mod 'wordpress', local: true
+mod 'myapp', local: true
