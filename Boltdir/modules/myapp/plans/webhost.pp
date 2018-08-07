@@ -12,7 +12,7 @@ plan myapp::webhost(
 
     include nginx
 
-    nginx::resource::server { 'www.myapp.com':
+    nginx::resource::server { $facts['ec2_metadata']['public-hostname']:
       listen_port => 80,
       www_root    => '/var/www/myapp',
       index_files => ['index.html'],
