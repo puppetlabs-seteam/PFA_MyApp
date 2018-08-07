@@ -36,6 +36,10 @@ plan myapp::prereqs(
       ensure => directory
     }
 
+    file { '/var/www/myapp':
+      ensure => directory
+    }
+
   }
 
   # return $report
