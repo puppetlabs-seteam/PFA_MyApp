@@ -31,15 +31,15 @@ plan myapp::prereqs(
       source => 'puppet:///modules/myapp/RPM-GPG-KEY-remi',
     }
 
-    yumrepo { 'remi-php73':
+    yumrepo { 'remi':
       ensure     => 'present',
-      descr      => 'Remi\'s PHP 7.3 RPM repository for Enterprise Linux 7 - $basearch',
-      baseurl    => 'http://rpms.remirepo.net/enterprise/7/php73/$basearch/',
-      mirrorlist => 'http://cdn.remirepo.net/enterprise/7/php73/mirror',
+      descr      => 'Remi's RPM repository for Enterprise Linux 7 - $basearch',
+      baseurl    => 'http://rpms.remirepo.net/enterprise/7/remi/$basearch/',
+      mirrorlist => 'http://cdn.remirepo.net/enterprise/7/remi/mirror',
       gpgkey     => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi',
       enabled    => '1',
       gpgcheck   => '1',
-      target     => '/etc/yum.repos.d/remi-php73.repo',
+      target     => '/etc/yum.repos.d/remi.repo',
       require    => File['/etc/pki/rpm-gpg/RPM-GPG-KEY-remi']
     }
 
