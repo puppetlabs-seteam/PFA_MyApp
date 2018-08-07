@@ -24,9 +24,9 @@ plan myapp::webhost(
       },
     }
 
-    nginx::resource::location { 'myapp-php':
+    nginx::resource::location { 'myapp_root':
       ensure              => present,
-      server              => $facts['ec2_metadata']['public-hostname'],
+      server              => 'myapp' ,
       www_root            => '/var/www/myapp/web',
       location            => '~ \.php$',
       index_files         => ['index.php'],
