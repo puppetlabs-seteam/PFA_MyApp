@@ -29,10 +29,9 @@ plan myapp::webhost(
       server              => 'myapp' ,
       www_root            => '/var/www/myapp/web',
       location            => '~ \.php$',
-      index_files         => ['index.php'],
       fastcgi             => 'unix:/var/run/php-fpm.sock',
-      fastcgi_script      => '$document_root$fastcgi_script_name;',
-      fastcgi_split_path  => '^(.+\.php)(/.+)$'
+      fastcgi_index       => 'index.php',
+      fastcgi_split_path  => '^(.+\.php)(/.+)$',
     }
 
   }
