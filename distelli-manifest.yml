@@ -13,12 +13,10 @@ seteam/PFA_MyApp:
     - sudo /usr/local/bin/bolt plan run myapp::prereqs
     - sudo cp -rf myapp/* /var/www/myapp
     - sudo /usr/local/bin/bolt plan run myapp::webhost
-  Exec:
+  Start:
+    - sudo /bin/systemctl start nginx
+  PostStart:
     - appurl=$(/opt/puppetlabs/puppet/bin/facter ec2_metadata.public-hostname) || true
     - 'echo "****************************************************************"'
-    - 'echo     "My Application will start on: http://$appurl"'
+    - 'echo     "This app started on: http://$appurl"'
     - 'echo "****************************************************************"'
-    - sudo /bin/systemctl reload nginx.service
-  PostStart:
-    #- publicip=$(curl -s ident.me) || true
-    #- curl -s "http://$publicip" | grep 'Your Node.js application is working!'
