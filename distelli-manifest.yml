@@ -11,6 +11,7 @@ seteam/PFA_MyApp:
   PostInstall:
     - sudo /usr/local/bin/bolt puppetfile install
     - sudo /usr/local/bin/bolt plan run myapp::prereqs
+    - sudo rm -rf /var/www/myapp/*
     - sudo cp -rf myapp/* /var/www/myapp
     - sudo /usr/local/bin/bolt plan run myapp::webhost
   Start:

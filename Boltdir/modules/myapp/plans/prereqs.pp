@@ -58,7 +58,9 @@ plan myapp::prereqs(
     }
 
     file { '/var/www/myapp':
-      ensure => directory
+      ensure => directory,
+      owner  => 'nginx',
+      group  => 'nginx',
     }
 
   }
