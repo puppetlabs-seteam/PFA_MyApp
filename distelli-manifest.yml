@@ -4,7 +4,7 @@ seteam/PFA_MyApp:
 
   PkgInclude:
     - 'Boltdir/'
-    - 'index.html'
+    - 'myapp/'
   PreInstall:
     - sudo rpm -Uvh https://yum.puppet.com/puppet/puppet-release-el-7.noarch.rpm || true
     - sudo yum install -y puppet-bolt
