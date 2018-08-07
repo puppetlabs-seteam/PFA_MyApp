@@ -17,7 +17,7 @@ plan myapp::webhost(
     nginx::resource::server { 'myapp':
       server_name         => [ $facts['ec2_metadata']['public-hostname'] ],
       listen_port         => 80,
-      www_root            => '/var/www/myapp/web',
+      www_root            => '/var/www/myapp',
       index_files         => ['index.php'],
       location_cfg_append => {
         try_files => '$uri $uri/ =404'
@@ -25,13 +25,13 @@ plan myapp::webhost(
     }
 
     nginx::resource::location { 'myapp_root':
-      ensure              => present,
-      server              => 'myapp' ,
-      www_root            => '/var/www/myapp/web',
-      location            => '~ \.php$',
-      fastcgi             => '127.0.0.1:9000',
-      fastcgi_index       => 'index.php',
-      fastcgi_split_path  => '^(.+\.php)(/.+)$',
+      ensure             => present,
+      server             => 'myapp' ,
+      www_root           => '/var/www/myapp',
+      location           => '~ \.php$',
+      fastcgi            => '127.0.0.1:9000',
+      fastcgi_index      => 'index.php',
+      fastcgi_split_path => '^(.+\.php)(/.+)$',
     }
 
   }
