@@ -1,4 +1,4 @@
-plan myapp::install(
+plan myapp::prereqs(
 ) {
   # Prep this node for applying Puppet code (doesn't work yet)
   apply_prep('localhost')
@@ -21,6 +21,10 @@ plan myapp::install(
       grant    => ['SELECT', 'UPDATE'],
     }
 
+    class {'mysql::bindings':
+      php_enable => true,
+    }
+
     class { 'php':
       composer  => false,
       fpm_user  => 'nginx',
@@ -28,33 +32,8 @@ plan myapp::install(
       require => Class['nginx']
     }
 
-    class {'mysql::bindings':
-      php_enable => true,
-      require => Class['php']
-    }
-
     file { '/var/www':
       ensure => directory
-    }
-
-    file { '/var/www/myapp':
-      ensure => directory
-      owner   => 'nginx',
-      group   => 'nginx',
-      mode    => '0755',
-      recurse => true,
-      require => Class['nginx']
-    }
-
-    file { "var/www/myapp/index.html":
-      ensure  => file,
-      content => epp('myapp/sample_website-index.html.epp'),
-    }
-
-    nginx::resource::server { 'www.myapp.com':
-      listen_port => 80,
-      www_root    => '/var/www/myapp',
-      index_files => ['index.html'],
     }
 
   }
