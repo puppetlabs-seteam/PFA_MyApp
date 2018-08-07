@@ -4,7 +4,7 @@ plan myapp::prereqs(
   apply_prep('localhost')
 
   # Apply MyApp prereqs
-  apply('localhost') {
+  $result = apply('localhost') {
 
     include epel
     include mysql::server
