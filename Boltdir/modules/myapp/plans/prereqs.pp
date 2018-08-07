@@ -1,19 +1,15 @@
 plan myapp::prereqs(
 ) {
-  # Prep this node for applying Puppet code (doesn't work yet)
+  # Prep this node for applying Puppet code
   apply_prep('localhost')
-  #run_task('puppet_agent::install', 'localhost')
 
-  # Retrieve facts
-  #run_plan('facts', nodes => 'localhost')
-
-  # Apply SampleApp prereqs
-  $report = apply('localhost') {
+  # Apply MyApp prereqs
+  apply('localhost') {
 
     include epel
     include mysql::server
     include mysql::client
-    
+
     class { 'nginx':
       names_hash_bucket_size => 128
     }
@@ -67,6 +63,13 @@ plan myapp::prereqs(
 
   }
 
-  # return $report
+  run_task(
+    'mysql::sql',
+    'localhost',
+    database => 'MyApp_database',
+    user => 'MyApp_dbuser',
+    password => 'MyApp_dbpass',
+    sql => 'CREATE TABLE IF NOT EXISTS urler(id INT UNSIGNED NOT NULL AUTO_INCREMENT, author VARCHAR(63) NOT NULL, message TEXT, PRIMARY KEY (id))'
+  )
 
 }
