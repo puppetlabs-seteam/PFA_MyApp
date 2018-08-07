@@ -10,6 +10,8 @@ plan myapp::webhost(
   # Apply SampleApp prereqs
   $report = apply('localhost') {
 
+    include nginx
+
     nginx::resource::server { 'www.myapp.com':
       listen_port => 80,
       www_root    => '/var/www/myapp',
