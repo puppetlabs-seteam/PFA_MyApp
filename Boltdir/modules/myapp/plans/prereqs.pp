@@ -13,7 +13,10 @@ plan myapp::prereqs(
     include epel
     include mysql::server
     include mysql::client
-    include nginx
+    
+    class { 'nginx':
+      names_hash_bucket_size => 128
+    }
 
     mysql::db { 'MyApp_database':
       user     => 'MyApp_dbuser',
