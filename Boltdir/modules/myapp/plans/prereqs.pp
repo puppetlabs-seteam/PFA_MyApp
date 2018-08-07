@@ -41,7 +41,7 @@ plan myapp::prereqs(
       enabled    => '1',
       gpgcheck   => '1',
       target     => '/etc/yum.repos.d/remi-php73.repo',
-      require    => File['/etc/yum.repos.d/remi-php73.repo']
+      require    => File['/etc/pki/rpm-gpg/RPM-GPG-KEY-remi']
     }
 
     class { 'php':
