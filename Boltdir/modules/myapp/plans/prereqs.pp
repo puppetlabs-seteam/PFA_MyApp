@@ -33,7 +33,7 @@ plan myapp::prereqs(
 
     yumrepo { 'remi':
       ensure     => 'present',
-      descr      => 'Remi's RPM repository for Enterprise Linux 7 - $basearch',
+      descr      => 'Remi\'s RPM repository for Enterprise Linux 7 - $basearch',
       baseurl    => 'http://rpms.remirepo.net/enterprise/7/remi/$basearch/',
       mirrorlist => 'http://cdn.remirepo.net/enterprise/7/remi/mirror',
       gpgkey     => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi',
