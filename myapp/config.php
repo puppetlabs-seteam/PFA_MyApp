@@ -8,7 +8,7 @@ $db_password = "MyApp_dbpass";
 
 // Image upload options
 $storage_option = "hd";
-$hd_folder  = "uploads";
+$hd_folder  = "/var/www/myapp/uploads";
 
 // Simulate latency, in seconds
 $latency = 0;
