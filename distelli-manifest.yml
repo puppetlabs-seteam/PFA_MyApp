@@ -1,0 +1,24 @@
+seteam/PFA_MyApp:
+  # This Basic Distelli Manifest assumes the following
+  # has been provisioned on the destination deploy server:
+
+  PkgInclude:
+    - 'Boltdir/'
+    - 'index.html'
+  PreInstall:
+    - sudo rpm -Uvh https://yum.puppet.com/puppet/puppet-release-el-7.noarch.rpm || true
+    - sudo yum install -y puppet-bolt
+  PostInstall:
+    - sudo /usr/local/bin/bolt puppetfile install
+    - sudo /usr/local/bin/bolt plan run myapp::prereqs
+    - sudo mv -f index.html /var/www/myapp
+    - sudo /usr/local/bin/bolt plan run myapp::webhost
+  Exec:
+    - publicip=$(curl -s ident.me) || true
+    - 'echo "****************************************************************"'
+    - 'echo     "My Application will start on: http://$publicip"'
+    - 'echo "****************************************************************"'
+    - service nginx reload
+  PostStart:
+    #- publicip=$(curl -s ident.me) || true
+    #- curl -s "http://$publicip" | grep 'Your Node.js application is working!'
