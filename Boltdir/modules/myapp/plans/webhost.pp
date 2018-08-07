@@ -14,6 +14,13 @@ plan myapp::webhost(
       names_hash_bucket_size => 128
     }
 
+    file { '/var/www/myapp':
+      ensure  => directory,
+      owner   => 'nginx',
+      group   => 'nginx',
+      recurse => true
+    }
+
     nginx::resource::server { 'myapp':
       server_name         => [ $facts['ec2_metadata']['public-hostname'] ],
       listen_port         => 80,
