@@ -14,9 +14,9 @@ seteam/PFA_MyApp:
     - sudo cp -rf myapp/* /var/www/myapp
     - sudo /usr/local/bin/bolt plan run myapp::webhost
   Exec:
-    - publicip=$(curl -s ident.me) || true
+    - appurl=$(/opt/puppetlabs/puppet/bin/facter ec2_metadata.public-hostname) || true
     - 'echo "****************************************************************"'
-    - 'echo     "My Application will start on: http://$publicip"'
+    - 'echo     "My Application will start on: http://$appurl"'
     - 'echo "****************************************************************"'
     - sudo /bin/systemctl reload nginx.service
   PostStart:
