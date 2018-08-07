@@ -18,6 +18,8 @@ plan myapp::webhost(
       ensure  => directory,
       owner   => 'nginx',
       group   => 'nginx',
+      mode    => '0755',
+      seltype => 'httpd_sys_rw_content_t',
       recurse => true
     }
 
