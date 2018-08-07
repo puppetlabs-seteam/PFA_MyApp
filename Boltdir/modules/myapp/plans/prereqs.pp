@@ -10,6 +10,7 @@ plan myapp::prereqs(
   # Apply SampleApp prereqs
   $report = apply('localhost') {
 
+    include epel
     include mysql::server
     include mysql::client
     include nginx
@@ -29,7 +30,7 @@ plan myapp::prereqs(
       composer  => false,
       fpm_user  => 'nginx',
       fpm_group => 'nginx',
-      require => Class['nginx']
+      require => [ Class['nginx'], Class['epel'] ]
     }
 
     file { '/var/www':
