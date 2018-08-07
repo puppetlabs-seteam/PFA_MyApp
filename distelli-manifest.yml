@@ -18,7 +18,7 @@ seteam/PFA_MyApp:
     - 'echo "****************************************************************"'
     - 'echo     "My Application will start on: http://$publicip"'
     - 'echo "****************************************************************"'
-    - service nginx reload
+    - sudo /bin/systemctl reload nginx.service
   PostStart:
     #- publicip=$(curl -s ident.me) || true
     #- curl -s "http://$publicip" | grep 'Your Node.js application is working!'
