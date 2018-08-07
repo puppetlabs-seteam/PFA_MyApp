@@ -13,7 +13,10 @@ plan myapp::prereqs(
     include epel
     include mysql::server
     include mysql::client
-    include nginx
+    
+    class { 'nginx':
+      names_hash_bucket_size => 64
+    }
 
     mysql::db { 'MyApp_database':
       user     => 'MyApp_dbuser',
@@ -24,10 +27,6 @@ plan myapp::prereqs(
 
     class {'mysql::bindings':
       php_enable => true,
-    }
-    
-    class {'nginx::config':
-      names_hash_bucket_size => 64,
     }
 
     file { '/etc/pki/rpm-gpg/RPM-GPG-KEY-remi':
