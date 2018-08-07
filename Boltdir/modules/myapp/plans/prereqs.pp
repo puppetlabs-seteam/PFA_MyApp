@@ -50,7 +50,7 @@ plan myapp::prereqs(
       require   => [
         Class['nginx'],
         Class['epel'],
-        Yumrepo['remi-php73']
+        Yumrepo['remi']
       ]
     }
 
