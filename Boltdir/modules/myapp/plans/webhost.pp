@@ -11,7 +11,7 @@ plan myapp::webhost(
   $report = apply('localhost') {
 
     class { 'nginx':
-      names_hash_bucket_size => 64
+      names_hash_bucket_size => 128
     }
 
     nginx::resource::server { $facts['ec2_metadata']['public-hostname']:
