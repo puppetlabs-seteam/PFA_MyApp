@@ -1,10 +1,17 @@
-mod 'puppetlabs-stdlib',            :latest
-mod 'puppet-php',                   :latest
-mod 'puppet-nginx',                 :latest
-mod 'puppetlabs-concat',            :latest
-mod 'puppetlabs-mysql',             :latest
-mod 'puppetlabs-translate',         :latest
-mod 'puppet-staging',               :latest
+mod 'puppetlabs-stdlib',     :latest
+
+mod 'puppet-php',            :latest
+mod 'puppetlabs-apt',        :latest
+mod 'puppetlabs-inifile',    :latest
+mod 'puppet-zypprepo',       :latest
+mod 'puppet-archive',        :latest
+
+mod 'puppet-nginx',          :latest
+mod 'puppetlabs-concat',     :latest
+
+mod 'puppetlabs-mysql',      :latest
+mod 'puppetlabs-translate',  :latest
+mod 'puppet-staging',        :latest
 
 # name the module holding the plan so it doesn't get purged by 'bolt module install'
 mod 'myapp', local: true
