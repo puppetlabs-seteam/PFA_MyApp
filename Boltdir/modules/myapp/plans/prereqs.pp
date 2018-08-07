@@ -26,11 +26,33 @@ plan myapp::prereqs(
       php_enable => true,
     }
 
+    file { '/etc/yum.repos.d/remi-php73.repo':
+      ensure => present,
+      source => 'puppet:///modules/myapp/RPM-GPG-KEY-remi',
+    }
+
+    yumrepo { 'remi-php73':
+      ensure     => 'present',
+      name       => 'Remi's PHP 7.3 RPM repository for Enterprise Linux 7 - $basearch',
+      descr      => 'Puppet Labs Products El 7 - $basearch',
+      baseurl    => 'http://rpms.remirepo.net/enterprise/7/php73/$basearch/',
+      mirrorlist => 'http://cdn.remirepo.net/enterprise/7/php73/mirror',
+      gpgkey     => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi',
+      enabled    => '1',
+      gpgcheck   => '1',
+      target     => '/etc/yum.repos.d/remi-php73.repo',
+      require    => File['/etc/yum.repos.d/remi-php73.repo']
+    }
+
     class { 'php':
       composer  => false,
       fpm_user  => 'nginx',
       fpm_group => 'nginx',
-      require => [ Class['nginx'], Class['epel'] ]
+      require   => [
+        Class['nginx'],
+        Class['epel'],
+        Yumrepo['remi-php73']
+      ]
     }
 
     file { '/var/www':
