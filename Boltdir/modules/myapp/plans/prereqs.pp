@@ -95,8 +95,7 @@ plan myapp::prereqs(
         (7,"Qingye Jiang","clouds7.jpg","2015-01-31 04:24:34"),
         (8,"Qingye Jiang","clouds8.jpg","2015-01-31 04:24:38"),
         (9,"Qingye Jiang","clouds9.jpg","2015-01-31 04:25:49"),
-        (10,"Qingye Jiang","clouds10.jpg","2015-01-31 04:25:53")
-      )'
+        (10,"Qingye Jiang","clouds10.jpg","2015-01-31 04:25:53")'
   )
 
 }
