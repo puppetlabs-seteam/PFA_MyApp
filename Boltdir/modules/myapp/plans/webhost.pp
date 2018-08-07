@@ -10,7 +10,9 @@ plan myapp::webhost(
   # Apply SampleApp prereqs
   $report = apply('localhost') {
 
-    include nginx
+    class { 'nginx':
+      names_hash_bucket_size => 64
+    }
 
     nginx::resource::server { $facts['ec2_metadata']['public-hostname']:
       listen_port => 80,
