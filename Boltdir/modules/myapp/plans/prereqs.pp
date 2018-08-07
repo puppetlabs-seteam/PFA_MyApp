@@ -18,7 +18,7 @@ plan myapp::prereqs(
       user     => 'MyApp_dbuser',
       password => 'MyApp_dbpass',
       host     => 'localhost',
-      grant    => ['SELECT', 'UPDATE'],
+      grant    => ['ALL'],
     }
 
     class {'mysql::bindings':
