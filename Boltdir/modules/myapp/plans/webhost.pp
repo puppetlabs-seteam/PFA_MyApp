@@ -26,16 +26,13 @@ plan myapp::webhost(
 
     nginx::resource::location { 'myapp-php':
       ensure              => present,
-      vhost               => $facts['ec2_metadata']['public-hostname'],
+      server              => $facts['ec2_metadata']['public-hostname'],
       www_root            => '/var/www/myapp/web',
       location            => '~ \.php$',
       index_files         => ['index.php'],
-      proxy               => undef,
       fastcgi             => 'unix:/var/run/php-fpm.sock',
-      fastcgi_script      => 'SCRIPT_FILENAME $document_root$fastcgi_script_name;',
-      location_cfg_append => {
-        fastcgi_split_path_info => '^(.+\.php)(/.+)$',
-      }
+      fastcgi_script      => '$document_root$fastcgi_script_name;',
+      fastcgi_split_path  => '^(.+\.php)(/.+)$'
     }
 
   }
