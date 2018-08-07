@@ -33,8 +33,7 @@ plan myapp::prereqs(
 
     yumrepo { 'remi-php73':
       ensure     => 'present',
-      name       => 'Remi\'s PHP 7.3 RPM repository for Enterprise Linux 7 - $basearch',
-      descr      => 'Puppet Labs Products El 7 - $basearch',
+      descr      => 'Remi\'s PHP 7.3 RPM repository for Enterprise Linux 7 - $basearch',
       baseurl    => 'http://rpms.remirepo.net/enterprise/7/php73/$basearch/',
       mirrorlist => 'http://cdn.remirepo.net/enterprise/7/php73/mirror',
       gpgkey     => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi',
