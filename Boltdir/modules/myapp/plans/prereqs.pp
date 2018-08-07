@@ -26,7 +26,7 @@ plan myapp::prereqs(
       php_enable => true,
     }
 
-    file { '/etc/yum.repos.d/remi-php73.repo':
+    file { '/etc/pki/rpm-gpg/RPM-GPG-KEY-remi':
       ensure => present,
       source => 'puppet:///modules/myapp/RPM-GPG-KEY-remi',
     }
