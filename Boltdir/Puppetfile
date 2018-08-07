@@ -1,7 +1,7 @@
 mod 'puppetlabs-stdlib',     :latest
 
 mod 'puppet-php',            :latest
-mod 'puppetlabs-apt',        :latest
+mod 'puppetlabs-apt',        '4.5.1'
 mod 'puppetlabs-inifile',    :latest
 mod 'puppet-zypprepo',       :latest
 mod 'puppet-archive',        :latest
