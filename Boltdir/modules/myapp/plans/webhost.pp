@@ -1,13 +1,9 @@
 plan myapp::webhost(
 ) {
-  # Prep this node for applying Puppet code (doesn't work yet)
+  # Prep this node for applying Puppet code
   apply_prep('localhost')
-  #run_task('puppet_agent::install', 'localhost')
 
-  # Retrieve facts
-  #run_plan('facts', nodes => 'localhost')
-
-  # Apply SampleApp prereqs
+  # Apply MyApp nginx config
   $report = apply('localhost') {
 
     class { 'nginx':
