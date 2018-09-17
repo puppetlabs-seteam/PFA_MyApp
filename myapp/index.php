@@ -5,7 +5,7 @@
  *
  */
 
-include("config.php"));
+include("config.php");
 session_start();
 $server   = $_SERVER['SERVER_ADDR'];
 $db = open_db_connection($db_hostname, $db_port, $db_database, $db_username, $db_password);
