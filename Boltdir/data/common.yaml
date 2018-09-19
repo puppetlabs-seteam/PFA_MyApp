@@ -1,4 +1,6 @@
 ---
+yum::managed_repos:
+    - 'remi'
 yum::repos:
   remi:
     ensure: 'present'
@@ -8,6 +10,3 @@ yum::repos:
     gpgcheck: true
     gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi'
     target: '/etc/yum.repos.d/remi.repo'
-lookup_options:
-  yum::repos:
-    merge: hash
