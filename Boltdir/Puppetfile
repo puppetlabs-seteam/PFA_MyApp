@@ -1,4 +1,5 @@
 mod 'puppetlabs-stdlib',       :latest
+mod 'puppet-yum',              :latest
 
 #EPEL
 mod 'stahnma-epel',            :latest

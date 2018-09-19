@@ -6,6 +6,7 @@ plan myapp::prereqs(
   # Apply MyApp prereqs
   $result = apply('localhost') {
 
+    include yum
     include epel
     include mysql::server
     include mysql::client
@@ -25,21 +26,9 @@ plan myapp::prereqs(
       php_enable => true,
     }
 
-    file { '/etc/pki/rpm-gpg/RPM-GPG-KEY-remi':
+    yum::gpgkey { '/etc/pki/rpm-gpg/RPM-GPG-KEY-remi':
       ensure => present,
       source => 'puppet:///modules/myapp/RPM-GPG-KEY-remi',
-    }
-
-    yumrepo { 'remi':
-      ensure     => 'present',
-      descr      => 'Remi\'s RPM repository for Enterprise Linux 7 - $basearch',
-      baseurl    => 'http://rpms.remirepo.net/enterprise/7/remi/$basearch/',
-      mirrorlist => 'http://cdn.remirepo.net/enterprise/7/remi/mirror',
-      gpgkey     => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi',
-      enabled    => '1',
-      gpgcheck   => '1',
-      target     => '/etc/yum.repos.d/remi.repo',
-      require    => File['/etc/pki/rpm-gpg/RPM-GPG-KEY-remi']
     }
 
     class { 'php':
@@ -49,7 +38,7 @@ plan myapp::prereqs(
       require   => [
         Class['nginx'],
         Class['epel'],
-        Yumrepo['remi']
+        Class['yum'],
       ]
     }
 

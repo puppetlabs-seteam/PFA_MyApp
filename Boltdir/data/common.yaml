@@ -1,0 +1,10 @@
+---
+yum::repos:
+    remi:
+        ensure: 'present'
+        enabled: true
+        descr: 'Remi\'s RPM repository for Enterprise Linux 7 - $basearch'
+        baseurl: 'http://rpms.remirepo.net/enterprise/7/remi/$basearch/'
+        gpgcheck: true
+        gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi'
+        target: '/etc/yum.repos.d/remi.repo'
