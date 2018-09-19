@@ -1,4 +1,6 @@
+#BASICS
 mod 'puppetlabs-stdlib',       :latest
+mod 'puppetlabs-concat',       :latest
 mod 'puppet-yum',              :latest
 
 #EPEL
