@@ -6,8 +6,8 @@ seteam/PFA_MyApp:
     - 'Boltdir/'
     - 'myapp/'
   PreInstall:
-    - sudo rpm -Uvh https://yum.puppet.com/puppet/puppet-release-el-7.noarch.rpm || true
-    - sudo yum install -y puppet-bolt
+    - sudo rpm -Uvh https://yum.puppet.com/puppet5/puppet5-release-el-7.noarch.rpm || true
+    - sudo yum install -y puppet-bolt-0.21.8
   PostInstall:
     - sudo /usr/local/bin/bolt puppetfile install
     - sudo /usr/local/bin/bolt plan run myapp::prereqs
