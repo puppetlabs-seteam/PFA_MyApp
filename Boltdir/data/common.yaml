@@ -8,3 +8,4 @@ yum::repos:
     gpgcheck: true
     gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi'
     target: '/etc/yum.repos.d/remi.repo'
+lookup_options:
