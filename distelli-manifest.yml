@@ -1,6 +1,6 @@
 seteam/PFA_MyApp:
   # This Basic Distelli Manifest assumes the following
-  # has been provisioned on the destination deploy server:
+  # has been provisioned on the destination deploy server: 
 
   PkgInclude:
     - 'Boltdir/'
