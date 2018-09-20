@@ -1,9 +1,8 @@
 plan myapp::webhost(
 ) {
   # Prep this node for applying Puppet code
-  #apply_prep('localhost')
-  run_plan('facts', nodes => 'localhost')
-
+  apply_prep('localhost')
+  
   # Apply MyApp nginx config
   $report = apply('localhost') {
 

@@ -8,9 +8,8 @@ plan myapp::prereqs(
   )
 
   # Prep this node for applying Puppet code
-  #apply_prep('localhost')
-  run_plan('facts', nodes => 'localhost')
-
+  apply_prep('localhost')
+  
   # Apply MyApp prereqs
   $result = apply('localhost') {
 
