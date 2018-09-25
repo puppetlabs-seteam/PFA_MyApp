@@ -9,7 +9,7 @@ plan myapp::prereqs(
 
   # Prep this node for applying Puppet code
   apply_prep('localhost')
-  
+
   # Apply MyApp prereqs
   $result = apply('localhost') {
 
