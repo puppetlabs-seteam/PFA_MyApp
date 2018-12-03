@@ -172,7 +172,7 @@ if (isset($_SESSION['username']))
 else
 {
 	// This section is shown when user is not login
-	ecy3wirhwiyfwho "<table width=100% border=0>";
+	echo "<table width=100% border=0>";
 	echo "<tr>";
 		echo "<td><H1>Welcome DockerCon Europe to the Pipelines for Applications Sample App!</H1></td>";
 		echo "<td align='right'>";
