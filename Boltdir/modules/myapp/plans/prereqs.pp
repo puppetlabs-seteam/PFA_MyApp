@@ -1,12 +1,5 @@
 plan myapp::prereqs(
 ) {
-  # Apply Puppet v5 due to issues with v6 & Bolt
-  run_task(
-    'puppet_agent::install',
-    'localhost',
-    collection => 'puppet5',
-  )
-
   # Prep this node for applying Puppet code
   apply_prep('localhost')
 
