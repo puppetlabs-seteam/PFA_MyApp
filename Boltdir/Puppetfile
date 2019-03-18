@@ -1,8 +1,8 @@
 #BASICS
 mod 'puppetlabs-stdlib',       '4.25.1'
 mod 'puppetlabs-concat',       '4.2.1'
-#mod 'puppetlabs-yumrepo_core', :latest
-#mod 'puppetlabs-augeas_core',  :latest
+mod 'puppetlabs-yumrepo_core', :latest
+mod 'puppetlabs-augeas_core',  :latest
 
 #EPEL
 mod 'stahnma-epel',            :latest
@@ -15,7 +15,7 @@ mod 'puppet-zypprepo',         '2.2.1'
 mod 'puppet-archive',          '3.2.0'
 
 #NGINX
-mod 'puppet-nginx',            '0.13.0'
+mod 'puppet-nginx',            :latest
 
 #MYSQL
 mod 'puppetlabs-mysql',        :latest
