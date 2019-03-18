@@ -64,7 +64,8 @@ plan myapp::prereqs(
     }
 
     file { '/var/www/myapp':
-      ensure  => directory
+      ensure  => directory,
+      seltype => 'httpd_sys_rw_content_t',
     }
 
   }
