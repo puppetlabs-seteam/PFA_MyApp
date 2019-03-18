@@ -10,10 +10,10 @@ seteam/PFA_MyApp:
     - 'sudo yum install -y puppet-bolt'
   PostInstall:
     - 'sudo /usr/local/bin/bolt puppetfile install'
-    - 'sudo /usr/local/bin/bolt plan run myapp::prereqs'
+    - 'sudo /usr/local/bin/bolt plan run myapp::prereqs --run-as root'
     - 'sudo rm -rf /var/www/myapp/*'
     - 'sudo cp -rf myapp/* /var/www/myapp'
-    - 'sudo /usr/local/bin/bolt plan run myapp::webhost'
+    - 'sudo /usr/local/bin/bolt plan run myapp::webhost --run-as root'
   Start:
     - 'sudo /bin/systemctl restart php-fpm'
     - 'sudo /bin/systemctl restart nginx'
