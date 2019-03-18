@@ -1,5 +1,5 @@
 seteam/PFA_MyApp:
-  # This Basic Distelli Manifest assumes the following
+  # This Basic Distelli Manifest assumes the following 
   # has been provisioned on the destination deploy server: 
 
   PkgInclude:
