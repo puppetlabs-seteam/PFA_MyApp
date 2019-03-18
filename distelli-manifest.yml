@@ -6,19 +6,19 @@ seteam/PFA_MyApp:
     - 'Boltdir/'
     - 'myapp/'
   PreInstall:
-    - sudo rpm -Uvh https://yum.puppet.com/puppet6/puppet6-release-el-7.noarch.rpm || true
-    - sudo yum install -y puppet-bolt
+    - 'sudo rpm -Uvh https://yum.puppet.com/puppet6/puppet6-release-el-7.noarch.rpm || true'
+    - 'sudo yum install -y puppet-bolt'
   PostInstall:
-    - sudo /usr/local/bin/bolt puppetfile install
-    - sudo /usr/local/bin/bolt plan run myapp::prereqs --verbose --format json | jq
-    - sudo rm -rf /var/www/myapp/*
-    - sudo cp -rf myapp/* /var/www/myapp
-    - sudo /usr/local/bin/bolt plan run myapp::webhost --verbose --format json | jq
+    - 'sudo /usr/local/bin/bolt puppetfile install'
+    - 'sudo /usr/local/bin/bolt plan run myapp::prereqs --verbose --format json | jq'
+    - 'sudo rm -rf /var/www/myapp/*'
+    - 'sudo cp -rf myapp/* /var/www/myapp'
+    - 'sudo /usr/local/bin/bolt plan run myapp::webhost --verbose --format json | jq'
   Start:
-    - sudo /bin/systemctl restart php-fpm
-    - sudo /bin/systemctl restart nginx
+    - 'sudo /bin/systemctl restart php-fpm'
+    - 'sudo /bin/systemctl restart nginx'
   PostStart:
-    - appurl=$(/opt/puppetlabs/puppet/bin/facter ec2_metadata.public-hostname) || true
+    - 'appurl=$(/opt/puppetlabs/puppet/bin/facter ec2_metadata.public-hostname) || true'
     - 'echo "****************************************************************"'
     - 'echo     "This app started on: http://$appurl"'
     - 'echo "****************************************************************"'
