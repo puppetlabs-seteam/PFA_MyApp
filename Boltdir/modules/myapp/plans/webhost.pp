@@ -43,6 +43,6 @@ plan myapp::webhost(
 
   # return $report
   # Run chcon to fix SElinux permissions
-  # run_command('chcon -Rv --type=httpd_sys_rw_content_t /var/www/myapp', 'localhost', 'Fix SElinux permissions...')
+  run_command('chcon -Rv --type=httpd_sys_rw_content_t /var/www/myapp', 'localhost', 'Fix SElinux permissions...')
 
 }
