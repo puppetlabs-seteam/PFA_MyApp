@@ -6,8 +6,10 @@ seteam/PFA_MyApp:
     - 'Boltdir/'
     - 'myapp/'
   PreInstall:
+    - 'sudo yum clean all'
     - 'sudo rpm -Uvh https://yum.puppet.com/puppet6/puppet6-release-el-7.noarch.rpm || true'
-    - 'sudo yum install -y puppet-bolt jq'
+    - 'sudo yum install -y puppet-bolt'
+    - 'sudo yum install -y jq'
   PostInstall:
     - 'sudo /usr/local/bin/bolt puppetfile install'
     - 'sudo /usr/local/bin/bolt plan run myapp::prereqs --run-as root'
