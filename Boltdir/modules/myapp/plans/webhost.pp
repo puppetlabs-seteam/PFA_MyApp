@@ -4,7 +4,7 @@ plan myapp::webhost(
   apply_prep('localhost')
 
   # Apply MyApp nginx config
-  $report = apply('localhost') {
+  $results = apply('localhost') {
 
     class { 'nginx':
       names_hash_bucket_size => 128
@@ -41,8 +41,7 @@ plan myapp::webhost(
 
   }
 
-  # return $report
-  # Run chcon to fix SElinux permissions
-  # run_command('chcon -Rv --type=httpd_sys_rw_content_t /var/www/myapp', 'localhost', 'Fix SElinux permissions...')
-
+  #$results.each |$result| {
+  #   notice($result.report)
+  #}
 }
