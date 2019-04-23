@@ -10,6 +10,11 @@ plan myapp::prereqs(
     include mysql::server
     include mysql::client
 
+    package { 'jq':
+      ensure  => present,
+      require => Class['epel']
+    }
+
     class { 'nginx':
       names_hash_bucket_size => 128
     }
